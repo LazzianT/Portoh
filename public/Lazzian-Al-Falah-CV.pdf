@@ -1,0 +1,57 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Length 1631 >>
+stream
+BT
+0.722 0.961 0 rg 72 744 132 4 re f
+1 0 0 1 72 782 Tm /F2 26 Tf 0.024 0.106 0.255 rg (LAZZIAN AL FALAH) Tj
+1 0 0 1 72 758 Tm /F1 13 Tf 0.44 0.50 0.59 rg (Software Developer) Tj
+1 0 0 1 72 712 Tm /F2 11 Tf 0.024 0.106 0.255 rg (PROFILE) Tj
+1 0 0 1 72 694 Tm /F1 11 Tf 0 0 0 rg (Software developer who loves turning ideas into real-world applications.) Tj
+1 0 0 1 72 679 Tm /F1 11 Tf 0 0 0 rg (Enjoys building clean, scalable systems with modern technologies and is) Tj
+1 0 0 1 72 664 Tm /F1 11 Tf 0 0 0 rg (always excited to learn something new.) Tj
+1 0 0 1 72 632 Tm /F2 11 Tf 0.024 0.106 0.255 rg (SKILLS) Tj
+1 0 0 1 72 614 Tm /F1 11 Tf 0 0 0 rg (React  /  Node.js  /  SQL Server  /  Tailwind CSS) Tj
+1 0 0 1 72 582 Tm /F2 11 Tf 0.024 0.106 0.255 rg (PROJECTS) Tj
+1 0 0 1 72 564 Tm /F1 11 Tf 0 0 0 rg (WMS - Warehouse Management System  \(React, SQL Server, Tailwind\)) Tj
+1 0 0 1 72 548 Tm /F1 11 Tf 0 0 0 rg (Project Management App  \(React, Express.js, Tailwind\)) Tj
+1 0 0 1 72 532 Tm /F1 11 Tf 0 0 0 rg (Send.it - Shipping App  \(Figma, UI/UX, Prototype\)) Tj
+1 0 0 1 72 516 Tm /F1 11 Tf 0 0 0 rg (LazyTech Store  \(React, Node.js, Tailwind\)) Tj
+1 0 0 1 72 500 Tm /F1 11 Tf 0 0 0 rg (School Management System  \(PHP, MySQL, Bootstrap\)) Tj
+1 0 0 1 72 466 Tm /F2 11 Tf 0.024 0.106 0.255 rg (CONTACT) Tj
+1 0 0 1 72 448 Tm /F1 11 Tf 0 0 0 rg (Email:      alfalah.lazzian03@gmail.com) Tj
+1 0 0 1 72 432 Tm /F1 11 Tf 0 0 0 rg (Location:   Indonesia) Tj
+1 0 0 1 72 416 Tm /F1 11 Tf 0 0 0 rg (GitHub:     github.com/LazzianT) Tj
+1 0 0 1 72 400 Tm /F1 11 Tf 0 0 0 rg (LinkedIn:   linkedin.com/in/lazzian-al-falah-a18733306) Tj
+ET
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000000348 00000 n 
+0000000450 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+2132
+%%EOF
