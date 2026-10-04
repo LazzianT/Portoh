@@ -57,7 +57,7 @@ export default function Hero() {
             custom={2}
             className="mt-6 max-w-lg text-base leading-relaxed text-muted"
           >
-            I&apos;m a software developer who loves turning ideas into real-world applications. I
+            I&apos;m a web developer who loves turning ideas into real-world applications. I
             enjoy building clean, scalable systems with modern technologies and always excited to
             learn something new.
           </motion.p>
@@ -125,7 +125,7 @@ export default function Hero() {
           </Note>
           <motion.img
             src={profile.heroPortrait}
-            alt="Lazzian Al Falah, software developer, with a code card"
+            alt="Lazzian Al Falah, web developer, with a code card"
             className="relative w-full"
             style={{
               clipPath:

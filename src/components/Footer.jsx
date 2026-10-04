@@ -24,7 +24,7 @@ export default function Footer() {
             <span className="ml-0.5 mt-4 h-2.5 w-2.5 rounded-full bg-lime" />
           </a>
           <p className="mt-5 text-sm leading-relaxed text-white/55">
-            Software developer turning ideas into real-world applications. Always curious, always
+            Web developer turning ideas into real-world applications. Always curious, always
             learning, always building.
           </p>
           <div className="mt-6 flex items-center gap-3">

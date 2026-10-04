@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Download, Menu, X } from 'lucide-react';
 import { navLinks } from '../data/portfolio.js';
+import MobileMenu from './MobileMenu.jsx';
 
 const cvUrl = '/Lazzian-Al-Falah-CV.pdf';
 
@@ -34,18 +35,44 @@ export default function Navbar() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => e.key === 'Escape' && setOpen(false);
+    const onResize = () => window.innerWidth >= 768 && setOpen(false);
+    window.addEventListener('keydown', onKey);
+    window.addEventListener('resize', onResize);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      window.removeEventListener('resize', onResize);
+    };
+  }, [open]);
+
   const handleNav = (href) => {
     setOpen(false);
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => {
+      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    }, 20);
   };
 
+  const activeLabel = navLinks.find((l) => l.href.slice(1) === active)?.label ?? 'Menu';
+
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/85 shadow-[0_10px_30px_-20px_rgba(6,27,65,0.4)] backdrop-blur-md' : 'bg-transparent'
-      }`}
-    >
-      <nav className="container-x flex h-[72px] items-center justify-between gap-4">
+    <>
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+          scrolled || open
+            ? 'bg-white/85 shadow-[0_10px_30px_-20px_rgba(6,27,65,0.4)] backdrop-blur-md'
+            : 'bg-transparent'
+        }`}
+      >
+      <nav className="container-x relative z-50 flex h-[72px] items-center justify-between gap-4">
         <a
           href="#home"
           onClick={(e) => {
@@ -91,66 +118,59 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <a
-            href={cvUrl}
-            download="Lazzian-Al-Falah-CV.pdf"
-            className="btn-navy hidden !px-5 !py-2.5 sm:inline-flex"
-          >
-            Download CV
-            <Download className="h-4 w-4" />
-          </a>
+          {!open && (
+            <a
+              href={cvUrl}
+              download="Lazzian-Al-Falah-CV.pdf"
+              className="btn-navy hidden !px-5 !py-2.5 sm:inline-flex"
+            >
+              Download CV
+              <Download className="h-4 w-4" />
+            </a>
+          )}
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
-            className="grid h-11 w-11 place-items-center rounded-2xl border border-navy/10 bg-white text-navy md:hidden"
+            className="group relative inline-flex h-11 items-center gap-2 overflow-hidden rounded-full border border-navy/10 bg-white pl-2.5 pr-1.5 text-navy transition-colors duration-300 md:hidden"
           >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.span
+                key={open ? 'close' : activeLabel}
+                initial={{ y: 9, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -9, opacity: 0 }}
+                transition={{ duration: 0.18 }}
+                className="hidden text-xs font-semibold uppercase tracking-[0.16em] min-[400px]:inline-block"
+              >
+                {open ? 'Close' : activeLabel}
+              </motion.span>
+            </AnimatePresence>
+            <span
+              className={`grid h-8 w-8 place-items-center rounded-full transition-colors duration-300 ${
+                open ? 'bg-lime text-navy' : 'bg-navy text-white'
+              }`}
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.span
+                  key={open ? 'x' : 'menu'}
+                  initial={{ rotate: open ? -90 : 90, opacity: 0, scale: 0.6 }}
+                  animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                  exit={{ rotate: open ? 90 : -90, opacity: 0, scale: 0.6 }}
+                  transition={{ duration: 0.18 }}
+                  className="grid place-items-center"
+                >
+                  {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+                </motion.span>
+              </AnimatePresence>
+            </span>
           </button>
         </div>
-      </nav>
+        </nav>
+      </header>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25 }}
-            className="overflow-hidden border-t border-navy/5 bg-white md:hidden"
-          >
-            <ul className="container-x flex flex-col gap-1 py-4">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNav(link.href);
-                    }}
-                    className={`block rounded-2xl px-4 py-3 text-base font-semibold ${
-                      active === link.href.slice(1) ? 'bg-soft text-navy' : 'text-muted'
-                    }`}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-              <li>
-                <a
-                  href={cvUrl}
-                  download="Lazzian-Al-Falah-CV.pdf"
-                  className="btn-navy mt-2 w-full"
-                >
-                  <Download className="h-4 w-4" />
-                  Download CV
-                </a>
-              </li>
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
+      <MobileMenu open={open} onClose={() => setOpen(false)} active={active} onNavigate={handleNav} />
+    </>
   );
 }
